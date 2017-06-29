@@ -1,4 +1,8 @@
-console.log("Linked.");
+// Project Name: Design CSS
+// Client: Personal Web
+// Author: Alex Li
+// Developer @GA in DENVER
+// console.log("Linked.");
 
 // Dramatis Personae
 var hobbits = [
@@ -21,13 +25,21 @@ var body = document.querySelector('body');
 
 
 // Part 1
-
+var centerOfWorld = document.createElement('section');
+centerOfWorld.setAttribute("id", "middle-earth")
 
 function makeMiddleEarth() {
   // create a section tag with an id of middle-earth
   // inside, add each land as an article tag
   // inside each article tag include an h1 with the name of the land
   // append middle-earth to your document body
+
+  for (var i = 0; i < lands.length; i++){
+    var landElement = document.createElement('h1');
+    landElement.innerHTML = lands[i];
+    centerOfWorld.append(landElement);
+    body.append(centerOfWorld)
+  }
 }
 
 makeMiddleEarth();
@@ -38,8 +50,19 @@ makeMiddleEarth();
 function makeHobbits() {
   // display an unordered list of hobbits in the shire (which is the first article tag on the page)
   // give each hobbit a class of hobbit
+
+  var firstlocation = centerOfWorld.querySelector('h1');
+  var list = document.createElement("ul");
+  for (var i = 0; i < hobbits.length; i++){
+    var hobbitsElements = document.createElement('li');
+    hobbitsElements.innerHTML = hobbits[i];
+    hobbitsElements.className = "hobbit";
+    list.append(hobbitsElements);
+    firstlocation.append(list);
+  }
 }
 
+makeHobbits()
 
 // Part 3
 
@@ -48,8 +71,16 @@ function keepItSecretKeepItSafe() {
   // give the div a class of 'magic-imbued-jewelry'
   // add an event listener so that when a user clicks on the ring, the nazgulScreech function (provided) is invoked
   // add the ring as a child of Frodo
+  var theRing = document.createElement('div');
+
+  var Frodo = centerOfWorld.querySelector('li');
+  theRing.setAttribute("id", "the-ring");
+  theRing.className = "magic-imbued-jewelry";
+  theRing.addEventListener("click",nazgulScreech)
+  Frodo.appendChild(theRing);
 }
 
+keepItSecretKeepItSafe();
 
 // Part 4
 
@@ -58,7 +89,22 @@ function makeBuddies() {
   // create an aside tag
   // attach an unordered list of the 'buddies' in the aside
   // insert your aside as a child element of rivendell
+  var newAsideTag = document.createElement('aside');
+  var list = document.createElement("ul");
+
+  var rivendell = document.getElementsByTagName("h1")[1];
+
+  for (var i = 0; i < buddies.length; i++){
+    var friends = document.createElement('li');
+    friends.innerHTML = buddies[i];
+    list.append(friends);
+    newAsideTag.append(list);
+    rivendell.append(newAsideTag);
+
+  }
 }
+
+makeBuddies()
 
 
 // Part 5
@@ -66,9 +112,12 @@ function makeBuddies() {
 
 function beautifulStranger() {
   // change the 'Strider' textnode to 'Aragorn'
+
+  var strider = document.getElementsByTagName("li")[7];
+    strider.innerHTML = 'Aragorn';
 }
 
-
+beautifulStranger()
 // Part 6
 
 function leaveTheShire() {
