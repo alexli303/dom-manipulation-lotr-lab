@@ -106,23 +106,31 @@ function makeBuddies() {
 
 makeBuddies()
 
-
 // Part 5
-
-
 function beautifulStranger() {
   // change the 'Strider' textnode to 'Aragorn'
-
   var strider = document.getElementsByTagName("li")[7];
-    strider.innerHTML = 'Aragorn';
+  strider.innerHTML = 'Aragorn';
 }
 
-beautifulStranger()
+//beautifulStranger()
+
 // Part 6
 
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
+  var rivendell = document.getElementsByTagName("h1")[1];
+  var list = document.createElement("ul");
+  for (var i = 0; i < hobbits.length; i++){
+    var hobbitsElements = document.createElement('li');
+    hobbitsElements.innerHTML = hobbits[i];
+    hobbitsElements.className = "hobbit";
+    list.append(hobbitsElements);
+    rivendell.append(list);
+  }
 }
+
+//leaveTheShire()
 
 
 // Part 7
@@ -132,18 +140,30 @@ function forgeTheFellowShip() {
   // create a new div called 'the-fellowship' within rivendell
   // add each hobbit and buddy one at a time to 'the-fellowship'
   // after each character is added make an alert that they have joined your party
+  var the_fellowship = document.createElement('div');
+  var rivendell = document.getElementsByTagName("h1")[1];
+  for (var i = 0; i < hobbits.length; i++){
+    the_fellowship.innerHTML += hobbits[i];
+    the_fellowship.innerHTML += buddies[i];
+    //alert(hobbits[i] + " " + buddies[i]);
+    rivendell.append(the_fellowship);
+  }
 }
+
+//forgeTheFellowShip()
 
 
 // Part 8
-
 
 function theBalrog() {
   // change the 'Gandalf' textNode to 'Gandalf the White'
   // apply style to the element
   // make the background 'white', add a grey border
+  var gandalf = document.querySelector("li");
+  gandalf.textNode = "Gandalf the White";
+  gandalf.background = "white";
 }
-
+//theBalrog();
 
 // Part 9
 
@@ -152,6 +172,7 @@ function hornOfGondor() {
   // Boromir's been killed by the Uruk-hai!
   // put a linethrough on boromir's name
   // Remove Boromir from the Fellowship
+  alert("horn of gondor has been blown");
 }
 
 
