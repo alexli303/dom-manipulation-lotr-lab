@@ -26,9 +26,11 @@ var body = document.querySelector('body');
 
 // Part 1
 var centerOfWorld = document.createElement('section');
-centerOfWorld.setAttribute("id", "middle-earth")
+centerOfWorld.setAttribute("id", "middle-earth");
 
 function makeMiddleEarth() {
+  // var centerOfWorld = document.createElement('section');
+  // centerOfWorld.setAttribute("id", "middle-earth");
   // create a section tag with an id of middle-earth
   // inside, add each land as an article tag
   // inside each article tag include an h1 with the name of the land
@@ -36,8 +38,10 @@ function makeMiddleEarth() {
 
   for (var i = 0; i < lands.length; i++){
     var landElement = document.createElement('h1');
+    var article = document.createElement('article');
     landElement.innerHTML = lands[i];
-    centerOfWorld.append(landElement);
+    article.append(landElement);
+    centerOfWorld.append(article);
     body.append(centerOfWorld)
   }
 }
