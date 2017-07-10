@@ -55,18 +55,19 @@ function makeHobbits() {
   // display an unordered list of hobbits in the shire (which is the first article tag on the page)
   // give each hobbit a class of hobbit
 
-  var firstlocation = centerOfWorld.querySelector('h1');
+  var firstlocation = centerOfWorld.querySelector('article');
   var list = document.createElement("ul");
+  //list.setAttribute("id","hobbitlist")
   for (var i = 0; i < hobbits.length; i++){
     var hobbitsElements = document.createElement('li');
     hobbitsElements.innerHTML = hobbits[i];
     hobbitsElements.className = "hobbit";
     list.append(hobbitsElements);
-    firstlocation.append(list);
   }
+  firstlocation.append(list);
 }
 
-makeHobbits()
+makeHobbits();
 
 // Part 3
 
@@ -96,11 +97,12 @@ function makeBuddies() {
   var newAsideTag = document.createElement('aside');
   var list = document.createElement("ul");
 
-  var rivendell = document.getElementsByTagName("h1")[1];
+  var rivendell = document.getElementsByTagName("article")[1];
 
   for (var i = 0; i < buddies.length; i++){
     var friends = document.createElement('li');
     friends.innerHTML = buddies[i];
+    //friends.setAttribute("id", "friends");
     list.append(friends);
     newAsideTag.append(list);
     rivendell.append(newAsideTag);
@@ -108,7 +110,7 @@ function makeBuddies() {
   }
 }
 
-makeBuddies()
+makeBuddies();
 
 // Part 5
 function beautifulStranger() {
@@ -117,26 +119,31 @@ function beautifulStranger() {
   strider.innerHTML = 'Aragorn';
 }
 
-//beautifulStranger()
+beautifulStranger();
 
 // Part 6
 
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
-  var rivendell = document.getElementsByTagName("h1")[1];
-  var list = document.createElement("ul");
-  for (var i = 0; i < hobbits.length; i++){
-    var hobbitsElements = document.createElement('li');
-    hobbitsElements.innerHTML = hobbits[i];
-    hobbitsElements.className = "hobbit";
-    list.append(hobbitsElements);
-    rivendell.append(list);
+  var rivendell = document.getElementsByTagName("ul")[1];
+  //var list = document.createElement("ul");
+  // for (var i = 0; i < hobbits.length; i++){
+  //   var hobbitsElements = document.createElement('li');
+  //   hobbitsElements.innerHTML = hobbits[i];
+  //   hobbitsElements.className = "hobbit";
+  //   //list.append(hobbitsElements);
+  //   rivendell.append(hobbitsElements);
+  //getElementsByClassName
+  // }
+  //rivendell.append(document.getElementsByClassName("hobbit"));
+  var tmp = document.querySelectorAll("li.hobbit");
+  for(var i = 0; i < tmp.length; i++){
+    rivendell.append(tmp[i]);
   }
 }
 
-//leaveTheShire()
-
-
+leaveTheShire();
+var tmp = document.getElementsByClassName("hobbit");
 // Part 7
 
 
